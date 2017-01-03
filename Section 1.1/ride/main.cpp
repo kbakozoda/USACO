@@ -1,11 +1,13 @@
 /*
- ID: komron11
+ ID: komron_1
  LANG: C++
  PROG: ride
  */
 
-#include<iostream>
-#include<stdio.h>
+#include <iostream>
+#include <stdio.h>
+#include <cstring>
+
 using namespace std;
 int main()
 {
@@ -25,8 +27,10 @@ int main()
     int ufoProduct = 1;
 
     for (int i = 0; i < 6; i++) {
-        groupNameProduct *= (groupName[i] - 64);
-        ufoProduct *= (ufo[i] - 64);
+        if (strlen (groupName) > i)
+            groupNameProduct *= (groupName[i] - 64);
+        if (strlen (ufo) > i)
+            ufoProduct *= (ufo[i] - 64);
     }
 
     groupNameProduct %= 47;
