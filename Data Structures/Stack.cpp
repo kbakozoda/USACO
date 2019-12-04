@@ -30,14 +30,12 @@ class Stack {
             return top->data;
         }
 
-        T pop() {
-            if (top == nullptr) return NULL;
-            T value = top->data;
+        void pop() {
+            if (top == nullptr) return;
             StackNode<T>* prevTop = top;
             top = top->next;
             _size--;
             delete prevTop;
-            return value;
         }
 
         int size() {
@@ -53,8 +51,8 @@ int main() {
     myStack->add(1);
     myStack->add(2);
     cout << myStack->peek() << endl;
-    cout <<"pop: " << myStack->pop() << endl;
-    cout << myStack->peek() << endl;
+    myStack->pop();
+    cout <<"after pop: " << myStack->peek() << endl;
     myStack->add(2);
     myStack->add(3);
     cout << "size:" << myStack->size() << endl;
