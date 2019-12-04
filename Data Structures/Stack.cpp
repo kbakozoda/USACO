@@ -14,8 +14,8 @@ struct StackNode {
 template<typename T>
 class Stack {
     public:
-        int size;
-        Stack(): top(nullptr), size(0) {}
+        int _size;
+        Stack(): top(nullptr), _size(0) {}
         bool isEmpty() {
             return top == nullptr;
         }
@@ -23,6 +23,7 @@ class Stack {
         void add(const T &val) {
             StackNode<T>* newNode = new StackNode<T>(val, top);
             top = newNode;
+            _size++;
         }
 
         T peek() const {
@@ -34,8 +35,13 @@ class Stack {
             T value = top->data;
             StackNode<T>* prevTop = top;
             top = top->next;
+            _size--;
             delete prevTop;
             return value;
+        }
+
+        int size() {
+            return _size;
         }
 
     StackNode<T>* top;
@@ -43,11 +49,14 @@ class Stack {
 
 int main() {
     Stack<int>* myStack = new Stack<int>();
-    myStack->isEmpty() ? cout << "Emtpty\n" : cout << "Has items\n";
+    myStack->isEmpty() ? cout << "Empty\n" : cout << "Has items\n";
     myStack->add(1);
     myStack->add(2);
     cout << myStack->peek() << endl;
     cout <<"pop: " << myStack->pop() << endl;
     cout << myStack->peek() << endl;
+    myStack->add(2);
+    myStack->add(3);
+    cout << "size:" << myStack->size() << endl;
     return 0;
 }
