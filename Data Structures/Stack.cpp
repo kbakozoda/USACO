@@ -27,6 +27,7 @@ class Stack {
         }
 
         T peek() const {
+            if (top == nullptr) return NULL;
             return top->data;
         }
 
