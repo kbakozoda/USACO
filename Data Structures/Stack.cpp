@@ -14,7 +14,6 @@ struct StackNode {
 template<typename T>
 class Stack {
     public:
-        int _size;
         Stack(): top(nullptr), _size(0) {}
         bool isEmpty() {
             return top == nullptr;
@@ -42,6 +41,9 @@ class Stack {
         int size() {
             return _size;
         }
+
+    private:
+        int _size;
 
     StackNode<T>* top;
 };
